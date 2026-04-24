@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "created": "2026-04-20T05:38:33.848Z",
+  "modified": "2026-04-20T05:38:39.875Z",
+  "objects": [
+    {
+      "id": "t2jp5sumz",
+      "type": "rect",
+      "x": 755,
+      "y": 294,
+      "width": 381,
+      "height": 750,
+      "data": {
+        "fill": null,
+        "stroke": "#8B2500",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "diwqyz850",
+      "type": "text",
+      "x": 770,
+      "y": 306,
+      "data": {
+        "content": "168 Fasting",
+        "fontSize": 16,
+        "color": "#C2622D",
+        "bold": false
+      },
+      "width": 91,
+      "height": 21
+    },
+    {
+      "id": "s70kshhz4",
+      "type": "ellipse",
+      "x": 796,
+      "y": 414,
+      "width": 33,
+      "height": 32,
+      "data": {
+        "fill": null,
+        "stroke": "#3D7C2F",
+        "strokeWidth": 2,
+        "text": "1"
+      }
+    },
+    {
+      "id": "wnnhi5g9y",
+      "type": "text",
+      "x": 779,
+      "y": 378,
+      "data": {
+        "content": "4月",
+        "fontSize": 16,
+        "color": "#3D7C2F",
+        "bold": false
+      },
+      "width": 26,
+      "height": 21
+    },
+    {
+      "id": "20in9lcab",
+      "type": "ellipse",
+      "x": 838,
+      "y": 413,
+      "width": 31,
+      "height": 33,
+      "data": {
+        "fill": null,
+        "stroke": "#000000",
+        "strokeWidth": 2,
+        "text": "2"
+      }
+    },
+    {
+      "id": "zxmke0ih5",
+      "type": "ellipse",
+      "x": 885,
+      "y": 413,
+      "width": 30,
+      "height": 33,
+      "data": {
+        "fill": null,
+        "stroke": "#000000",
+        "strokeWidth": 2,
+        "text": "3"
+      }
+    },
+    {
+      "id": "w1covkj18",
+      "type": "ellipse",
+      "x": 927,
+      "y": 413,
+      "width": 32,
+      "height": 34,
+      "data": {
+        "fill": null,
+        "stroke": "#000000",
+        "strokeWidth": 2,
+        "text": "4"
+      }
+    },
+    {
+      "id": "h7hwmfaav",
+      "type": "ellipse",
+      "x": 972,
+      "y": 413,
+      "width": 32,
+      "height": 33,
+      "data": {
+        "fill": null,
+        "stroke": "#000000",
+        "strokeWidth": 2,
+        "text": "5"
+      }
+    },
+    {
+      "id": "y26878ouy",
+      "type": "ellipse",
+      "x": 1014,
+      "y": 414,
+      "width": 30,
+      "height": 32,
+      "data": {
+        "fill": null,
+        "stroke": "#000000",
+        "strokeWidth": 2,
+        "text": "6"
+      }
+    },
+    {
+      "id": "bjrke7css",
+      "type": "ellipse",
+      "x": 1056,
+      "y": 415,
+      "width": 30,
+      "height": 30,
+      "data": {
+        "fill": null,
+        "stroke": "#000000",
+        "strokeWidth": 2,
+        "text": "7"
+      }
+    },
+    {
+      "id": "8zqbtyniu",
+      "type": "ellipse",
+      "x": 825,
+      "y": 580,
+      "width": 214,
+      "height": 213,
+      "data": {
+        "fill": null,
+        "stroke": "#000000",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "0divnhopt",
+      "type": "ellipse",
+      "x": 843,
+      "y": 614,
+      "width": 10,
+      "height": 12,
+      "data": {
+        "fill": null,
+        "stroke": "#8B2500",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "jauctt1n3",
+      "type": "ellipse",
+      "x": 1031,
+      "y": 665,
+      "width": 11,
+      "height": 11,
+      "data": {
+        "fill": null,
+        "stroke": "#8B2500",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "tg54wb2ya",
+      "type": "text",
+      "x": 893,
+      "y": 674,
+      "data": {
+        "content": "进食窗口还剩\n7:08：45",
+        "fontSize": 16,
+        "color": "#8B2500",
+        "bold": false
+      },
+      "width": 104,
+      "height": 42
+    },
+    {
+      "id": "7wijj7ljn",
+      "type": "text",
+      "x": 785,
+      "y": 851,
+      "data": {
+        "content": "Tips：\n\n今天多喝了2杯奶茶.. ops",
+        "fontSize": 16,
+        "color": "#8B2500",
+        "bold": false
+      },
+      "width": 198,
+      "height": 63
+    },
+    {
+      "id": "srnngh5jy",
+      "type": "ellipse",
+      "x": 928,
+      "y": 975,
+      "width": 42,
+      "height": 41,
+      "data": {
+        "fill": null,
+        "stroke": "#C2622D",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "9vre5qtq0",
+      "type": "ellipse",
+      "x": 1044,
+      "y": 987,
+      "width": 31,
+      "height": 31,
+      "data": {
+        "fill": null,
+        "stroke": "#C2622D",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "3t54tf6y9",
+      "type": "text",
+      "x": 931,
+      "y": 1022,
+      "data": {
+        "content": "home",
+        "fontSize": 16,
+        "color": "#C2622D",
+        "bold": false
+      },
+      "width": 41,
+      "height": 21
+    },
+    {
+      "id": "p8906nslg",
+      "type": "text",
+      "x": 1044,
+      "y": 1022.5,
+      "data": {
+        "content": "成就",
+        "fontSize": 16,
+        "color": "#C2622D",
+        "bold": false
+      },
+      "width": 37,
+      "height": 21
+    },
+    {
+      "id": "0hzpt3769",
+      "type": "ellipse",
+      "x": 809,
+      "y": 988,
+      "width": 31,
+      "height": 30,
+      "data": {
+        "fill": null,
+        "stroke": "#C2622D",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "id": "q9spdux7g",
+      "type": "text",
+      "x": 805,
+      "y": 1021.5,
+      "data": {
+        "content": "日历",
+        "fontSize": 16,
+        "color": "#C2622D",
+        "bold": false
+      },
+      "width": 37,
+      "height": 21
+    }
+  ]
+}

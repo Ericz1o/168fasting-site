@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>168 Fasting · English</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  html, body {
+    margin: 0; padding: 0; min-height: 100vh;
+    background: radial-gradient(ellipse at 50% 20%, #2a2a28 0%, #15140f 60%, #0a0907 100%);
+    font-family: "Cormorant Garamond", serif;
+    overflow-x: hidden;
+  }
+  * { box-sizing: border-box; }
+  button { font-family: inherit; }
+  @keyframes ringPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.06); }
+  }
+  @keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .tweaks {
+    position: fixed; bottom: 20px; right: 20px; z-index: 100;
+    background: rgba(20, 18, 14, 0.92);
+    backdrop-filter: blur(12px);
+    border: 0.5px solid rgba(216, 205, 181, 0.3);
+    padding: 16px;
+    color: #D8CDB5;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    min-width: 220px;
+    display: none;
+  }
+  .tweaks.on { display: block; animation: fadeIn 0.3s; }
+  .tweaks button {
+    background: transparent;
+    border: 0.5px solid rgba(216,205,181,0.3);
+    color: #D8CDB5;
+    padding: 4px 8px;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 2px;
+    font-weight: 500;
+  }
+  .tweaks button.active {
+    background: #556B44; color: #F5EFE3; border-color: #556B44;
+  }
+  .tweaks h4 {
+    margin: 0 0 6px; font-size: 9px; font-weight: 600;
+    letter-spacing: 3px; color: #A89F8F;
+    border-bottom: 0.5px solid rgba(216,205,181,0.15);
+    padding-bottom: 6px;
+  }
+  .lang-switch {
+    position: fixed; top: 20px; right: 20px; z-index: 99;
+    display: flex; gap: 0;
+    background: rgba(20,18,14,0.85);
+    border: 0.5px solid rgba(216,205,181,0.25);
+    backdrop-filter: blur(8px);
+  }
+  .lang-switch a {
+    padding: 8px 14px;
+    font-family: "Inter", sans-serif;
+    font-size: 10px; letter-spacing: 2px; font-weight: 500;
+    color: #A89F8F; text-decoration: none;
+  }
+  .lang-switch a.active { color: #F5EFE3; background: rgba(85,107,68,0.4); }
+</style>
+</head>
+<body>
+<div class="lang-switch">
+  <a href="index.html">中 文</a>
+  <a href="index-en.html" class="active">EN</a>
+</div>
+
+<div id="root" style="display:flex;justify-content:center;align-items:flex-start;padding:40px 0 60px;min-height:100vh;"></div>
+
+<div class="tweaks" id="tweaks">
+  <h4>STATE</h4>
+  <div id="stateBtns"></div>
+  <h4 style="margin-top:12px">PAGE</h4>
+  <div id="pageBtns"></div>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="app-en/tokens.jsx"></script>
+<script type="text/babel" src="app-en/Ring.jsx"></script>
+<script type="text/babel" src="app-en/WeekCal.jsx"></script>
+<script type="text/babel" src="app-en/ReminderToast.jsx"></script>
+<script type="text/babel" src="app-en/HomeScreen.jsx"></script>
+<script type="text/babel" src="app-en/CalendarScreen.jsx"></script>
+<script type="text/babel" src="app-en/AchievementScreen.jsx"></script>
+<script type="text/babel" src="app-en/TabBar.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const STATE_CONFIG = {
+  idle:    { mins: 0,   total: 480 },
+  eating:  { mins: 420, total: 480 },
+  warn1:   { mins: 60,  total: 480 },
+  warn2:   { mins: 30,  total: 480 },
+  warn3:   { mins: 15,  total: 480 },
+  fasting: { mins: 540, total: 960 },
+  closed:  { mins: 0,   total: 480 },
+};
+
+const WEEK = [
+  { day: 'S', date: 13, pct: 1,   past: true },
+  { day: 'M', date: 14, pct: 0.9, past: true },
+  { day: 'T', date: 15, pct: 0.6, isToday: true },
+  { day: 'W', date: 16, future: true },
+  { day: 'T', date: 17, future: true },
+  { day: 'F', date: 18, future: true },
+  { day: 'S', date: 19, future: true },
+];
+
+const MONTH_DATA = (() => {
+  const data = [];
+  const startOffset = 3;
+  for (let i = 0; i < startOffset; i++) data.push(null);
+  const today = 15;
+  for (let d = 1; d <= 30; d++) {
+    if (d < today) {
+      const pct = 0.6 + ((d * 7919) % 100) / 250 + 0.1;
+      data.push({ date: d, pct: Math.min(1, pct) });
+    } else if (d === today) {
+      data.push({ date: d, pct: 0.6, isToday: true });
+    } else {
+      data.push({ date: d, pct: 0, future: true });
+    }
+  }
+  return data;
+})();
+
+function App() {
+  const [state, setState] = useState('eating');
+  const [page, setPage] = useState('home');
+  const [showToast, setShowToast] = useState(true);
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    if (['warn1','warn2','warn3','closed'].includes(state)) setShowToast(true);
+    else setShowToast(false);
+  }, [state]);
+
+  useEffect(() => {
+    const id = setInterval(() => setTick(t => t + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const cfg = STATE_CONFIG[state];
+  const liveMins = Math.max(0, cfg.mins - (tick % 60) / 60);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks').classList.add('on');
+      if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('on');
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  useEffect(() => {
+    const states = [
+      ['idle', 'IDLE'],
+      ['eating', 'EATING'],
+      ['warn1', '1  HR'],
+      ['warn2', '30  M'],
+      ['warn3', '15  M'],
+      ['fasting', 'FASTING'],
+      ['closed', 'CLOSED'],
+    ];
+    const pages = [
+      ['calendar', 'CALENDAR'],
+      ['home', 'TODAY'],
+      ['ach', 'MILESTONES'],
+    ];
+    const sb = document.getElementById('stateBtns');
+    const pb = document.getElementById('pageBtns');
+    sb.innerHTML = ''; pb.innerHTML = '';
+    states.forEach(([k,l]) => {
+      const b = document.createElement('button');
+      b.textContent = l;
+      if (k === state) b.classList.add('active');
+      b.onclick = () => setState(k);
+      sb.appendChild(b);
+    });
+    pages.forEach(([k,l]) => {
+      const b = document.createElement('button');
+      b.textContent = l;
+      if (k === page) b.classList.add('active');
+      b.onclick = () => setPage(k);
+      pb.appendChild(b);
+    });
+  }, [state, page]);
+
+  const screen = (() => {
+    if (page === 'calendar') return <CalendarScreen monthData={MONTH_DATA} />;
+    if (page === 'ach') return <AchievementScreen />;
+    return <HomeScreen state={state} setState={setState} mins={liveMins} totalMins={cfg.total} weekData={WEEK} />;
+  })();
+
+  return (
+    <IOSDevice dark={false} width={390} height={844}>
+      <div data-screen-label={page === 'home' ? '01 Today' : page === 'calendar' ? '02 Calendar' : '03 Milestones'}
+           style={{ height: '100%', position: 'relative' }}>
+        {screen}
+        {page === 'home' && showToast && (
+          <ReminderToast state={state} onDismiss={() => setShowToast(false)} />
+        )}
+        <TabBar current={page} onChange={setPage} />
+      </div>
+    </IOSDevice>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
